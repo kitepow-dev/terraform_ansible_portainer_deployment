@@ -1,1 +1,0 @@
-# terraform_ansible_portainer_deployment
