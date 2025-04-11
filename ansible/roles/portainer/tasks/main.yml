@@ -1,0 +1,24 @@
+---
+- name: Create Docker volume for Portainer data
+  docker_volume:
+    name: portainer_data
+    state: present
+
+- name: Pull Portainer Docker image
+  docker_image:
+    name: portainer/portainer-ce
+    tag: "{{ portainer_version }}"
+    source: pull
+
+- name: Run Portainer container
+  docker_container:
+    name: portainer
+    image: portainer/portainer-ce:{{ portainer_version }}
+    state: started
+    restart_policy: always
+    published_ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+    env:
+      TZ: "UTC"

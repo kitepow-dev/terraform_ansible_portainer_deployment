@@ -1,0 +1,5 @@
+disk: /dev/vdb
+volume_group: docker_vg
+logical_volume: docker_lv
+lv_size: 10G
+mount_point: /docker_data
